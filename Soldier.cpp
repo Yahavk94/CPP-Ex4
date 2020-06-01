@@ -32,13 +32,9 @@ namespace WarGame {
             for (int j = 0; j < board[i].size(); j++) {
                 if (board[i][j] == nullptr) {
                     continue;
-                }
-
-                else if (board[i][j]->team != this->team) {
+                } else if (board[i][j]->team != this->team) {
                     continue;
-                }
-
-                else if (board[i][j]->type != type) {
+                } else if (board[i][j]->type != type) {
                     continue;
                 }
 

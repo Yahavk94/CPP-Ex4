@@ -1,5 +1,9 @@
 #pragma once
 
+/**
+ * SniperCommander class is derived from Sniper base class.
+ */
+
 #include "Sniper.hpp"
 
 namespace WarGame {

@@ -33,7 +33,7 @@ namespace WarGame {
 
         switch (direction) {
             case Down :
-                if (destination.first - 1 < 0) /* Illegal move */ {
+                if (destination.first - 1 < 0) {
                     throw std::invalid_argument("ERROR! An illegal attempt to move the current soldier up");
                 }
 

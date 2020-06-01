@@ -1,5 +1,9 @@
 #pragma once
 
+/**
+ * ParamedicCommander class is derived from Paramedic base class.
+ */
+
 #include "Paramedic.hpp"
 
 namespace WarGame {

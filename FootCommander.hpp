@@ -1,5 +1,9 @@
 #pragma once
 
+/**
+ * FootCommander class is derived from FootSoldier base class.
+ */
+
 #include "FootSoldier.hpp"
 
 namespace WarGame {

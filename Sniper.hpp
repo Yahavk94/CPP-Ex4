@@ -1,5 +1,9 @@
 #pragma once
 
+/**
+ * Sniper class is derived from Soldier base class.
+ */
+
 #include "Soldier.hpp"
 
 namespace WarGame {

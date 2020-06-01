@@ -9,20 +9,16 @@ namespace WarGame {
 
     void Paramedic::activate(std::vector<std::vector<Soldier*>>& board, std::pair<int,int> location) {
         for (int i = location.first - 1; i < location.first + 1; i++) {
-            if (0 < i | i >= board.size()) /* Make sure there are no boundary exceptions */ {
+            if (0 < i | i >= board.size()) /* Make sure there are no exceptions */ {
                 continue;
             }
 
             for (int j = location.second - 1; j < location.second + 1; j++) {
-                if (0 < j | j >= board[i].size()) /* Make sure there are no boundary exceptions */ {
+                if (board[i][j] == nullptr) {
                     continue;
-                }
-
-                else if (board[i][j] == nullptr) {
+                } else if (0 < j | j >= board[i].size()) /* Make sure there are no exceptions */ {
                     continue;
-                }
-
-                else if (location.first == i & location.second == j) /* A medic cannot heal himself */ {
+                } else if (location.first == i & location.second == j) /* A medic cannot heal himself */ {
                     continue;
                 }
 
