@@ -1,57 +1,59 @@
 #pragma once
 
+#include <cmath>
+#include <vector>
 #include <iostream>
 
-#define DAMAGE 0
-#define HEALTH 1
-
+#define FOOT 0
+#define SNIPER 1
+#define PARAMEDIC 2
 
 namespace WarGame {
     class Soldier {
     private:
-        //static int counter = 1;
-        int serialNumber;
-        int activity; // damage / heal
-        int health;
-        int damage_heal; // 0 = damage, 1 = heal
-        int player;
+        int maxHP;
 
     public:
-        Soldier() {}
-        /**
-         * A constructor.
-         */
-        Soldier(int activity, int health, int damage_heal, int player) {
-            this->serialNumber = 1 /*counter++*/ ;
-            this->activity = activity;
-            this->health = health;
-            this->damage_heal = damage_heal;
-            this->player = player;
-        }
+        uint team;
+        uint type;
+        bool commander;
+        int HP;
+        int damage;
 
         /**
-         * A destructor.
+         * Soldier constructor.
          */
-        virtual ~Soldier() {}
+        Soldier(uint team, uint type, bool commander, int HP, int damage);
 
-        int getSerialNumber() const {
-            return this->serialNumber;
-        }
+        /**
+         * Soldier deconstructor.
+         */
+        virtual ~Soldier();
 
-        int getActivity() const {
-            return this->activity;
-        }
+        /**
+         * This method returns the maximum HP of the current soldier.
+         */
+        int getMaxHP() const;
 
-        int getHealth() const {
-            return this->health;
-        }
+        /**
+         * This method sets the maximum HP of the current soldier.
+         */
+        void setMaxHP(int maxHP);
 
-        void setHealth(int health) {
-            this->health = health;
-        }
+        /**
+         * This method heals the current soldier.
+         * Should be used by medics only.
+         */
+        void heal();
 
-        int getDamage_Heal() const {
-            return this->damage_heal;
-        }
+        /**
+         * This method activates the skill of the current soldier.
+         */
+        virtual void activate(std::vector<std::vector<Soldier*>>& board, std::pair<int,int> location) = 0;
+
+        /**
+         * Used by commanders only.
+         */
+        void activateTogether(std::vector<std::vector<Soldier*>>& board, uint type);
     };
 };

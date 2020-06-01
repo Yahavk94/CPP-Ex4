@@ -1,16 +1,23 @@
+#pragma once
+
 #include "Sniper.hpp"
-
-#undef INITIAL_HEALTH
-#define INITIAL_HEALTH 120
-
-#undef DAMAGE_PER_ACTIVITY
-#define DAMAGE_PER_ACTIVITY 100
 
 namespace WarGame {
     class SniperCommander : public Sniper {
-        public:
-        SniperCommander(int player) : Sniper(DAMAGE, INITIAL_HEALTH, DAMAGE_PER_ACTIVITY, player) {}
+    public:
+        /**
+         * SniperCommander constructor.
+         */
+        SniperCommander(int team);
 
-        ~SniperCommander() {}
+        /**
+         * SniperCommander deconstructor.
+         */
+        ~SniperCommander();
+
+        /**
+         * This method activates the skill of the current sniper commander.
+         */
+        void activate(std::vector<std::vector<Soldier*>>& board, std::pair<int,int> location) override;
     };
 };

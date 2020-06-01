@@ -1,23 +1,23 @@
 #pragma once
 
-
 #include "Soldier.hpp"
-
-#define INITIAL_HEALTH 100
-#define HEAL_PER_ACTIVITY 200
 
 namespace WarGame {
     class Paramedic : public Soldier {
-        // For commander
-        Paramedic(int activity, int health, int damage_heal, int player) {
-            this = new Soldier(HEAL, INITIAL_HEALTH, HEAL_PER_ACTIVITY, player);
-        }
+    public:
+        /**
+         * Paramedic constructor.
+         */
+        Paramedic(int team);
 
-        // For soldier
-        Paramedic(int player) {
-            this = new Soldier(HEAL, INITIAL_HEALTH, HEAL_PER_ACTIVITY, player);
-        }
+        /**
+         * Paramedic deconstructor.
+         */
+        ~Paramedic();
 
-        ~Paramedic() {}
+        /**
+         * This method activates the skill of the current paramedic.
+         */
+        void activate(std::vector<std::vector<Soldier*>>& board, std::pair<int,int> location) override;
     };
 };

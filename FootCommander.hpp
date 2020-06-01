@@ -1,16 +1,23 @@
+#pragma once
+
 #include "FootSoldier.hpp"
-
-#undef INITIAL_HEALTH
-#define INITIAL_HEALTH 150
-
-#undef DAMAGE_PER_ACTIVITY
-#define DAMAGE_PER_ACTIVITY 20
 
 namespace WarGame {
     class FootCommander : public FootSoldier {
-        public:
-            FootCommander(int player) : FootSoldier(DAMAGE, INITIAL_HEALTH, DAMAGE_PER_ACTIVITY, player) {}
+    public:
+        /**
+         * FootCommander constructor.
+         */
+        FootCommander(int team);
 
-            ~FootCommander() {}
+        /**
+         * FootCommander deconstructor.
+         */
+        ~FootCommander();
+
+        /**
+         * This method activates the skill of the current foot commander.
+         */
+        void activate(std::vector<std::vector<Soldier*>>& board, std::pair<int,int> location) override;
     };
 };
