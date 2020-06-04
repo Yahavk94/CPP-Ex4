@@ -12,6 +12,5 @@ namespace WarGame {
 
     void SniperCommander::activate(std::vector<std::vector<Soldier*>>& board, std::pair<int,int> location) {
         Sniper::activate(board, location);
-        activateTogether(board, SNIPER);
     }
 };

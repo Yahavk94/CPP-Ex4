@@ -54,6 +54,6 @@ namespace WarGame {
         /**
          * Used by commanders only.
          */
-        void activateTogether(std::vector<std::vector<Soldier*>>& board, uint type);
+        void activateTogether(std::vector<std::vector<Soldier*>>& board);
     };
 };

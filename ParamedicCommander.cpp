@@ -11,6 +11,5 @@ namespace WarGame {
 
     void ParamedicCommander::activate(std::vector<std::vector<Soldier*>>& board, std::pair<int,int> location) {
         Paramedic::activate(board, location);
-        activateTogether(board, PARAMEDIC);
     }
 };

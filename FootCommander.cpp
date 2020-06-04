@@ -12,6 +12,5 @@ namespace WarGame {
 
     void FootCommander::activate(std::vector<std::vector<Soldier*>>& board, std::pair<int,int> location) {
         FootSoldier::activate(board, location);
-        activateTogether(board, FOOT);
     }
 };

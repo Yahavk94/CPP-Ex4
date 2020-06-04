@@ -15,20 +15,27 @@ namespace WarGame {
             for (int j = 0; j < board[i].size(); j++) {
                 if (board[i][j] == nullptr) {
                     continue;
+                } else if (board[i][j]->team == this->team) {
+                    continue;
                 }
 
-                if (board[i][j]->team != this->team) {
-                    if (board[i][j]->HP > max) /* Find the opponent with the greatest HP */ {
-                        max = board[i][j]->HP;
-                        target = {i,j};
-                    }
+                if (board[i][j]->HP > max) /* Find the opponent with the greatest HP */ {
+                    max = board[i][j]->HP;
+                    target = {i,j};
                 }
             }
         }
 
-        board[target.first][target.second]->HP -= this->damage;
+        if (!board[target.first][target.second]->commander) {
+            board[target.first][target.second]->HP -= 50;
+        } else {
+            board[target.first][target.second]->HP -= 100;
+        }
+
         if (board[target.first][target.second]->HP <= 0) /* This soldier has reached 0 HP */ {
+            Soldier* lost = board[target.first][target.second];
             board[target.first][target.second] = nullptr;
+            delete lost;
         }
     }
 };

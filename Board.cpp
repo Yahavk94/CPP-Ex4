@@ -75,7 +75,12 @@ namespace WarGame {
         board[source.first][source.second] = nullptr;
 
         /* Activate skill */
-        board[destination.first][destination.second]->activate(board, destination);
+        if (board[destination.first][destination.second]->commander) {
+            board[destination.first][destination.second]->activate(board, destination);
+            board[destination.first][destination.second]->activateTogether(board);
+        } else {
+            board[destination.first][destination.second]->activate(board, destination);
+        }
     }
 
     bool Board::has_soldiers(uint player_number) const {

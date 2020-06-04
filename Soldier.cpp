@@ -1,4 +1,5 @@
 #include "Soldier.hpp"
+#include "FootSoldier.hpp"
 
 namespace WarGame {
     Soldier::Soldier(uint team, uint type, bool commander, int HP, int damage) {
@@ -23,7 +24,7 @@ namespace WarGame {
         this->HP = this->getMaxHP();
     }
 
-    void Soldier::activateTogether(std::vector<std::vector<Soldier*>>& board, uint type) {
+    void Soldier::activateTogether(std::vector<std::vector<Soldier*>>& board) {
         if (!this->commander) /* Only a commander can run this method */ {
             return;
         }
@@ -32,9 +33,11 @@ namespace WarGame {
             for (int j = 0; j < board[i].size(); j++) {
                 if (board[i][j] == nullptr) {
                     continue;
+                } else if (board[i][j]->commander) {
+                    continue;
                 } else if (board[i][j]->team != this->team) {
                     continue;
-                } else if (board[i][j]->type != type) {
+                } else if (board[i][j]->type != this->type) {
                     continue;
                 }
 
