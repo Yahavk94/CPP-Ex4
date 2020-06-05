@@ -33,7 +33,7 @@ namespace WarGame {
         }
 
         if (board[target.first][target.second]->HP <= 0) /* This soldier has reached 0 HP */ {
-            Soldier* lost = board[target.first][target.second];
+            Soldier *lost = board[target.first][target.second];
             board[target.first][target.second] = nullptr;
             delete lost;
         }
